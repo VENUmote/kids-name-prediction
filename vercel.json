@@ -1,12 +1,7 @@
 {
   "functions": {
     "app.py": {
-      "includeFiles": [
-        "app.py",
-        "intents.json",
-        "kids_names_seed.json"
-      ]
+      "includeFiles": "{intents.json,kids_names_seed.json}"
     }
   }
 }
-
