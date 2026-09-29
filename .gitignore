@@ -1,0 +1,12 @@
+chatbot/
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.db
+dictionary_seed.json
+.vercel/
+.env
+.env.*
+!.env.example

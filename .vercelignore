@@ -1,0 +1,9 @@
+chatbot/
+.venv/
+venv/
+tests/
+*.db
+__pycache__/
+**/__pycache__/
+.env
+.env.*
