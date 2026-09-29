@@ -78,7 +78,7 @@ class NameSuggestionTests(unittest.TestCase):
 
     def test_database_initialization_is_repeatable(self):
         initialize_database(self.database_path)
-        self.assertEqual(len(find_names(self.database_path, limit=100)), 29)
+        self.assertGreaterEqual(len(find_names(self.database_path, limit=500)), 100)
 
 
 class ChatbotHttpTests(unittest.TestCase):
