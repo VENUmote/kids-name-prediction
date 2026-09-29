@@ -32,10 +32,15 @@ Try `suggest baby names`, `suggest girl names`, `suggest neutral nature names`,
 or `suggest names starting with A`. Ask `what does Aurora mean` to look up a
 name. Each suggestion includes its meaning, origin, and style.
 
+The bundled seed now contains more than 100 names across girl, boy, and
+gender-neutral suggestions, with classic, modern, nature, short, gentle, and
+strong styles. Some name meanings and origins vary by language or tradition;
+the data notes that uncertainty where appropriate. Combined filters can still
+have no matches.
+
 To add or change starter names, edit `kids_names_seed.json` and restart the
 app. Seeded entries are updated on startup while other database entries are
-left intact. Filters are based on the small starter list, so some combinations
-may not have matches.
+left intact.
 
 The greetings and bot information replies are stored in `intents.json`.
 
