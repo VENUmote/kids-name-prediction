@@ -21,6 +21,9 @@
         -moz-osx-font-smoothing: grayscale;
         --muted: #85899d;
         --accent: #6758e8;
+        --accent-soft: #f0eeff;
+        --scroll-thumb: #a69df2;
+        --scroll-track: #f1effb;
         --line: #eeeff4;
       }
 
@@ -28,16 +31,22 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         min-width: 320px;
         min-height: 100vh;
+        min-height: 100dvh;
         margin: 0;
         padding: 32px;
         display: grid;
         place-items: center;
+        overflow: hidden;
         background:
-          radial-gradient(ellipse at 13% 9%, rgba(219, 215, 255, 0.45), transparent 34%),
-          radial-gradient(ellipse at 89% 86%, rgba(220, 237, 255, 0.5), transparent 32%),
+          radial-gradient(ellipse at 13% 9%, rgba(219, 215, 255, 0.58), transparent 34%),
+          radial-gradient(ellipse at 89% 86%, rgba(220, 237, 255, 0.64), transparent 32%),
           #f6f7fb;
       }
 
@@ -50,10 +59,17 @@
         -webkit-tap-highlight-color: transparent;
       }
 
+      button:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid rgba(103, 88, 232, 0.35);
+        outline-offset: 3px;
+      }
+
       .app {
         width: min(1120px, 100%);
         height: min(760px, calc(100vh - 64px));
-        min-height: 540px;
+        height: min(760px, calc(100dvh - 64px));
+        min-height: min(540px, calc(100dvh - 64px));
         display: grid;
         grid-template-columns: 310px minmax(0, 1fr);
         overflow: hidden;
@@ -183,6 +199,7 @@
 
       .chat {
         min-width: 0;
+        min-height: 0;
         display: flex;
         flex-direction: column;
         background: #fff;
@@ -267,14 +284,41 @@
       }
 
       .conversation {
+        min-height: 0;
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
         gap: 22px;
         padding: 30px 40px 20px;
-        overflow: auto;
-        scrollbar-color: #d9d9e4 transparent;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        scroll-behavior: smooth;
+        scroll-padding-block: 20px;
+        scrollbar-color: var(--scroll-thumb) var(--scroll-track);
         scrollbar-width: thin;
+        scrollbar-gutter: stable;
+      }
+
+      .conversation::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      .conversation::-webkit-scrollbar-track {
+        margin-block: 8px;
+        border-radius: 999px;
+        background: var(--scroll-track);
+      }
+
+      .conversation::-webkit-scrollbar-thumb {
+        min-height: 36px;
+        border: 2px solid var(--scroll-track);
+        border-radius: 999px;
+        background: var(--scroll-thumb);
+      }
+
+      .conversation::-webkit-scrollbar-thumb:hover {
+        background: #8174e8;
       }
 
       .date-divider {
@@ -621,7 +665,7 @@
         .app {
           width: 100%;
           height: 100dvh;
-          min-height: 420px;
+          min-height: 0;
           grid-template-columns: minmax(0, 1fr);
           border: 0;
           border-radius: 0;
